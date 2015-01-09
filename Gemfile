@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.1.6'
-gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -23,3 +22,11 @@ gem 'devise-i18n'
 gem 'omniauth-facebook'
 
 gem 'rails-i18n', '~> 4.0.0'
+
+group :development 
+	gem 'sqlite3'
+end
+
+group :production
+	gem 'pg'
+end
