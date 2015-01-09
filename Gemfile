@@ -23,10 +23,10 @@ gem 'omniauth-facebook'
 
 gem 'rails-i18n', '~> 4.0.0'
 
-group :development 
+group :development do
 	gem 'sqlite3'
 end
 
-group :production
+group :production do
 	gem 'pg'
 end
