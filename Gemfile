@@ -15,8 +15,11 @@ gem 'spring',        group: :development
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
+gem 'paperclip', '~> 4.2.1'
+gem 'simple_form', '~> 3.1.0'
 
 gem 'devise', '~> 3.4.1'
 gem 'devise-i18n'
-gem 'paperclip', '~> 4.2.1'
-gem 'simple_form', '~> 3.1.0'
+gem 'omniauth-facebook'
+
+gem 'rails-i18n', '~> 4.0.0'

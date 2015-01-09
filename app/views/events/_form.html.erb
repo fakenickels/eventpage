@@ -1,0 +1,17 @@
+<%= simple_form_for @event_main, html: { multipart: true } do |f| %>
+	<% if @event_main.errors.any? %>
+		<div class="errors">
+			<%= @event_main.errors.count %> erro(s)
+		</div>
+		<ul>
+			<% @event_main.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+	
+	<%= f.file_field :banner, label: "Banner" %>
+	<%= f.input :name, label: "Nome" %>
+	<%= f.input :description, label: "Descrição" %>
+	<%= f.button :submit, "Salvar" %>
+<% end %>

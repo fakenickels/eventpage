@@ -1,7 +1,7 @@
-<div class="jumbotron header-banner">
+<div class="jumbotron header-banner" style="background-image: url(<%= @event_main.banner.url %>)">
   <div class="container">
-    <h1><%= @event.name %></h1>
-    <p><%= @event.theme %></p>
+    <h1><%= @event_main.name %></h1>
+    <p><%= @event_main.theme %></p>
   </div>
 </div>
 
@@ -15,22 +15,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to @event.name, root_path, class: "navbar-brand" %>
+      <%= link_to @event_main.name, root_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
+          
+          <% if current_user.is?(:admin) %>
+            <li>
+              <%= link_to 'Editar evento', edit_event_path(@event_main) %>
+            </li>
+
+            <li>
+              <%= link_to 'Editar palestrantes', speakers_path %>
+            </li>
+          <% end %>      
+            
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <%= current_user[:email] %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li>
-                <%= link_to "Minha conta", edit_user_registration_path%>
-              </li>
-
-              <li class="divider"></li>
               <li>
                 <%= link_to "Sair", destroy_user_session_path, method: :delete %>
               </li>
@@ -38,12 +44,8 @@
           </li>
         <% else %>
           <li>
-            <%= link_to "Criar conta", new_user_registration_path %>
+            <%= link_to "Criar conta ou entrar", user_omniauth_authorize_path(:facebook) %>
           </li>   
-
-          <li>
-            <%= link_to "Entrar", new_user_session_path %>
-          </li>
         <% end %>
       </ul>
 </nav>

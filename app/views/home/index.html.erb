@@ -1,2 +1,21 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1 class="page-header"><%= @event_main.name %></h1>
+
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
+<h2>Palestrantes</h2>
+<div class="row speakers-row">
+	<% @speakers.each do |speaker| %>
+		<div class="col-md-4 speakers">
+		<!-- <div class="speaker-pic" style="background-image:url(<%= speaker.user.image %>?type=large)"></div> -->
+			<%= 
+			image_tag speaker.user.image.try(:+, '?height=200&type=normal&width=200'), class: 'img-circle' 
+			%>
+			<h3><%=speaker.user.name%></h3>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,12 @@
+<%= simple_form_for @speaker, html:  { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :user, label: 'Usuário' %>
+  <%= error_span(@speaker[:user_id]) %>
+  <%= f.input :bio %>
+  <%= error_span(@speaker[:bio]) %>
+  <%= f.input :description, label: "Descrição" %>
+  <%= error_span(@speaker[:description]) %>
+
+  <%= f.button :submit, "Salvar", :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                speakers_path, :class => 'btn btn-default' %>
+<% end %>
