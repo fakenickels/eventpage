@@ -1,4 +1,7 @@
-<h1 class="page-header"><%= @event_main.name %></h1>
+<div class="jumbotron page-hd">
+	<h1><%= @event_main.name %></h1>
+	<p><%= @event_main.description %></p>
+</div>
 
 <div
   class="fb-like"
@@ -7,15 +10,21 @@
   data-show-faces="true">
 </div>
 
-<h2>Palestrantes</h2>
-<div class="row speakers-row">
-	<% @speakers.each do |speaker| %>
-		<div class="col-md-4 speakers">
-		<!-- <div class="speaker-pic" style="background-image:url(<%= speaker.user.image %>?type=large)"></div> -->
-			<%= 
-			image_tag speaker.user.image.try(:+, '?height=200&type=normal&width=200'), class: 'img-circle' 
-			%>
-			<h3><%=speaker.user.name%></h3>
+<div class="speakers-container">
+	<h2 class="page-header">Palestrantes</h2>
+
+	<% @speakers.each_slice(3) do |group| %>
+		<div class="row speakers-row">
+		<% group.each do |speaker| %>
+			<div class="col-md-4 speakers">
+			<!-- <div class="speaker-pic" style="background-image:url(<%= speaker.user.image %>?type=large)"></div> -->
+				<%= 
+				image_tag speaker.user.image.try(:+, '?height=200&type=normal&width=200'), class: 'img-circle' 
+				%>
+				<h3 class="speaker-title"><%= speaker.user.name %></h3>
+				<p class="speaker-bio"><%= speaker.bio %></p>
+			</div>
+		<% end %>
 		</div>
 	<% end %>
 </div>
