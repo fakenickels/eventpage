@@ -1,13 +1,14 @@
-<div class="jumbotron page-hd">
-	<h1><%= @event_main.name %></h1>
-	<p><%= @event_main.description %></p>
-</div>
-
 <div
   class="fb-like"
   data-share="true"
   data-width="450"
   data-show-faces="true">
+</div>
+
+<div class="jumbotron page-hd">
+	<h1><%= @event_main.name %></h1>
+	<p><%= @event_main.description %></p>
+	<p><%= link_to "Quero participar!", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary btn-lg' %></p>
 </div>
 
 <div class="speakers-container">

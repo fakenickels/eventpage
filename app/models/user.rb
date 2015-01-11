@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   	self.role.name.to_sym === role
   end
 
-  def self.from_omniauth(auth)
+  def self.find_or_create_by_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       if auth.info.image.present?
         user.update_attribute(:image, auth.info.image)

@@ -20,6 +20,7 @@ gem 'devise-i18n'
 gem 'omniauth-facebook'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'rails_12factor'
+gem 'unicorn'
 
 group :development do
 	gem 'sqlite3'
