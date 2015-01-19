@@ -12,6 +12,9 @@
 	
 	<%= f.file_field :banner, label: "Banner" %>
 	<%= f.input :name, label: "Nome" %>
+	<%= f.input :theme, label: "Tema", placeholder: "Caso não, deixe vazio" %>
+	<%= f.input :when, label: "Quando", placeholder: "17 à 15 de janeiro" %>
+	<%= f.input :where, label: "Onde", placeholder: "Universidade Qualquer, Av. José Maria, 182, Água Linda" %>
 	<%= f.input :description, label: "Descrição" %>
 	<%= f.button :submit, "Salvar" %>
 <% end %>
