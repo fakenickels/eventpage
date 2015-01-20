@@ -6,22 +6,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans|Lato:300,400|Varela+Round|Montserrat:300,400|Raleway:400,200|Oswald">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans|Lato:300,400|Varela+Round|Montserrat:300,400|Raleway:400,200|Oswald|Roboto+Condensed">
 </head>
 <body>
-<%= render 'layouts/header' %>
+<%= render 'layouts/home_header' %>
 
-<div class="container">
-  <% flash.each do |name, msg| %>
-    <div class='alert alert-info alert-dismissible' role="alert">
-       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-       </button>
-       <%= msg %>
-    </div>
-  <% end %>
-	<%= yield %>
-</div>
+<%= yield %>
 
 <%= render 'layouts/footer' %>
 <script>
@@ -40,6 +30,23 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+  'use strict';
+
+$(document).ready(function(){
+  var elHeight = $('.header-mask').height();
+
+  $(window).on('scroll', function(e){
+    if( window.scrollY >= elHeight){
+      $('#menu').removeClass('navbar-bg');
+    } else {
+      $('#menu').addClass('navbar-bg');
+    }
+  })
+});
+
+
 </script>
 </body>
 </html>

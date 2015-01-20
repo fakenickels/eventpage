@@ -1,31 +1,90 @@
-<div
+<!-- <div
   class="fb-like"
   data-share="true"
   data-width="450"
   data-show-faces="true">
+</div> -->
+
+<div class="header-mask" style="background-image: url(<%= @event_main.banner.url %>)">
+	<div class="jumbotron header-banner fullscreen">
+			<div class="container"> 
+				<div class="event-title">
+					<h1><%= @event_main.name %></h1>
+					<%= content_tag :p, @event_main.theme if @event_main.theme %>
+				</div>
+				<div class="event-convertion">
+					<%= 
+					link_to "Participe!", user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-lg' 
+					%>
+				</div>
+		</div>
+	</div>
 </div>
 
-<div class="jumbotron page-hd">
-	<h1><%= @event_main.name %></h1>
-	<p><%= @event_main.description %></p>
-	<p><%= link_to "Quero participar!", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary btn-lg' %></p>
+<div class="event-details-holder">
+	<div class="container">
+		<div class="event-details row">
+			<div class="event-when col-md-4">
+				<div class="icon-holder">
+					<i class="fa fa-calendar-o"></i>
+				</div>
+				<div class="sayings">
+					<h3>Quando</h3>
+					<p><%= @event_main.when %></p>
+				</div>
+			</div> 
+			<div class="event-where col-md-4">
+				<div class="icon-holder">	
+					<i class="fa fa-map-marker"></i>
+				</div>
+				<div class="sayings">
+					<h3>Onde</h3>
+					<p><%= @event_main.where %></p>
+				</div>
+			</div>
+			<div class="event-speakers col-md-4">
+				<div class="icon-holder">	
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="sayings">
+					<h3><%= @speakers.size %></h3>
+					<p>Palestrantes</p>
+				</div>			
+			</div>	
+		</div>
+	</div>	
 </div>
+
+<% if @event_main.description %>
+<div class="event-description-full">
+	<div class="jumbotron">
+		<h1><%= @event_main.name %></h1>
+		<div class="event-desc-text">
+			<p><%= @event_main.description %></p>
+			<p><%= link_to "Quero participar!", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary btn-lg' %></p>			
+		</div>
+	</div>		
+<% end%>
 
 <div class="speakers-container">
-	<h2 class="page-header">Palestrantes</h2>
+	<div class="container">
+		<h2 class="page-header">Palestrantes</h2>
 
-	<% @speakers.each_slice(3) do |group| %>
-		<div class="row speakers-row">
-		<% group.each do |speaker| %>
-			<div class="col-md-4 speakers">
-			<!-- <div class="speaker-pic" style="background-image:url(<%= speaker.user.image %>?type=large)"></div> -->
-				<%= 
-				image_tag speaker.user.image.try(:+, '?height=200&type=normal&width=200'), class: 'img-circle' 
-				%>
-				<h3 class="speaker-title"><%= speaker.user.name %></h3>
-				<p class="speaker-bio"><%= speaker.bio %></p>
+		<% @speakers.each_slice(3) do |group| %>
+			<div class="row speakers-row">
+			<% group.each do |speaker| %>
+				<div class="col-md-4 speakers">
+				<!-- <div class="speaker-pic" style="background-image:url(<%= speaker.user.image %>?type=large)"></div> -->
+					<%= 
+					image_tag speaker.user.image.try(:+, '?height=200&type=normal&width=200'), class: 'img-circle', width: '200' 
+					%>
+					<h3 class="speaker-title"><%= speaker.user.name %></h3>
+					<p class="speaker-bio"><%= speaker.bio %></p>
+				</div>
+			<% end %>
 			</div>
 		<% end %>
-		</div>
-	<% end %>
+	</div>	
 </div>
+
+
