@@ -24,7 +24,7 @@
 <div class="event-details-holder">
 	<div class="container">
 		<div class="event-details row">
-			<div class="event-when col-md-4">
+			<div class="event-when col-md-3">
 				<div class="icon-holder">
 					<i class="fa fa-calendar-o"></i>
 				</div>
@@ -33,7 +33,7 @@
 					<p><%= @event_main.when %></p>
 				</div>
 			</div> 
-			<div class="event-where col-md-4">
+			<div class="event-where col-md-3">
 				<div class="icon-holder">	
 					<i class="fa fa-map-marker"></i>
 				</div>
@@ -42,13 +42,23 @@
 					<p><%= @event_main.where %></p>
 				</div>
 			</div>
-			<div class="event-speakers col-md-4">
+			<div class="event-speakers col-md-3">
 				<div class="icon-holder">	
 					<i class="fa fa-users"></i>
 				</div>
 				<div class="sayings">
 					<h3><%= @speakers.size %></h3>
 					<p>Palestrantes</p>
+				</div>			
+			</div>				
+
+			<div class="event-courses col-md-3">
+				<div class="icon-holder">	
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="sayings">
+					<h3><%= @courses.size %></h3>
+					<p>Palestras/Mini-cursos</p>
 				</div>			
 			</div>	
 		</div>
@@ -87,4 +97,5 @@
 	</div>	
 </div>
 
-
+<div class="courses-container">
+</div>
